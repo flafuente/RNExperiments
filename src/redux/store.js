@@ -6,6 +6,7 @@ import reducers from './reducers';
 import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers'; // Version can be specified in package.json
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import { apiMiddleware } from 'redux-api-middleware';
 // import { ScreenTracking } from '../../middlewares/Tracking';
 // import Auth from '../../middlewares/Auth';
 
@@ -15,17 +16,18 @@ const persistConfig = {
   debug: true,
 }
 
-const middleware = createReactNavigationReduxMiddleware(
+const nav = createReactNavigationReduxMiddleware(
   "root",
   state => state.nav,
 );
 const enhancer = compose(
   applyMiddleware(
+    nav,
     thunk,
+    apiMiddleware,
     // ScreenTracking,
     // Auth,
     // logger, // DEV purposes
-    middleware,
   ),
   global.reduxNativeDevTools ?
     global.reduxNativeDevTools(/* options */) :

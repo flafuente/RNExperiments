@@ -13,13 +13,29 @@ const SignedIn = StackNavigator({
       {
         Screen1: {
           screen: Screen1,
+          navigationOptions: ({ navigation }) => ({
+            headerTitle: 'Screen 1',
+            headerTintColor: '#000',
+          }),
         },
         Screen2: {
           screen: Screen2,
+          navigationOptions: ({ navigation }) => ({
+            headerTitle: 'Screen 2',
+            headerTintColor: '#000',
+          }),
         },
         Screen3: {
           screen: Screen3,
+          navigationOptions: ({ navigation }) => ({
+            headerTitle: 'Screen 3',
+            headerTintColor: '#000',
+          }),
         },
+      },
+      {
+        swipeEnabled: true, // fixes a bug in react navigation
+        lazy: false, // fixes a bug in react navigation
       }
     ),
   },

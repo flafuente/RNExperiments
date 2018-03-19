@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { View, TouchableWithoutFeedback, Text } from 'react-native';
 import { store } from '../../redux/store';
-
+import { getBranches } from '../../redux/actions/test';
 
 class Screen2 extends Component {
 
@@ -13,8 +13,7 @@ class Screen2 extends Component {
       <View style={{ flex: 1, marginTop: 30 }}>
         <Text>Screen 2</Text>
         <TouchableWithoutFeedback onPress={() => {
-          store.dispatch({ type: 'XX', track: true });
-          this.props.navigation.navigate('Screen3', {});
+          this.props.getBranches();
         }}>
           <View><Text>NAVIGATE</Text></View>
         </TouchableWithoutFeedback>
@@ -31,6 +30,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-
+  getBranches,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Screen2);
